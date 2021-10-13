@@ -1,0 +1,174 @@
+/* ====================ANOTAÇÕES=============================
+para estudar o que pode ser feito com os elementos do CSS é preciso apenas seleciona-lo e pressionar ctrl + espaço*/
+
+/* ========== RESET ====================*/
+/*Deixar todos os elementos com os mesmos padrões (caso não configure será usado o padrão do navegador) */
+* {
+  /* O asteristico é o seletor universal de parâmentros*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*irá trazer um novo padrão para calculo das bordas*/
+}
+a {
+  /*tira as decorações dos links */
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* ========== VARIABLES (--) ====================*/
+:root {
+  --header-height: 4.5rem;
+  --hue: 159;
+  /* HSL color mode */
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
+  /*as cores da pagina são inseridas no root como variáveis para serem chamadas em suas respectivas caixas caso seja necessário*/
+}
+
+/* ========== BASE ====================*/
+body {
+  font: 400 1rem 'DM Sans', sans-serif;
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font: 700 1.875rem 'Poppins', sans-serif;
+  color: var(--title-color);
+  -webkit-font-smoothing: auto;
+}
+
+.button {
+  background-color: var(--base-color);
+  color: var(--text-color-light);
+  height: 3.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2rem;
+  border-radius: 0.25rem;
+  font: 500 1rem 'DM Sans', sans-serif;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  /*hover é quando o mouse é deixado sobre o botão*/
+  background: var(--base-color-alt);
+}
+
+.divider-1 {
+  /* gradiente linear seguindo até os 270 graus*/
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
+  );
+}
+
+/* ========== LAYOUT ====================*/
+.container {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.grid {
+  display: grid; /*habilita mais funções como o gap*/
+  gap: 2rem; /*espaçamento padrão entre os elementos da classe*/
+}
+.section {
+  padding: 5rem 0; /*5rem se refere as partes de cima e de baixo, 0 as laterais*/
+  /* preenchimento de espaço em todo início e final do conteúdo da página*/
+}
+
+#header {
+  border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 2rem;
+  display: flex;
+
+  width: 100%; /*vai dar os limites de largura para o container*/
+  position: fixed; /*vai fixar o header na tela*/
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--body-color);
+}
+
+nav {
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* alinhará um item a esquerda e outro a direita da pagina */
+}
+
+.logo {
+  font: 700 1.31rem 'Poppins', sans-serif;
+  color: var(--title-color);
+}
+
+.logo span {
+  color: var(--base-color);
+}
+
+main {
+  margin-top: var(--header-height);
+}
+
+/* ========== HOME ====================*/
+#home {
+  /*faz os elementeos manterem o limite do container*/
+  overflow: hidden;
+}
+#home .container {
+  margin: 0;
+}
+#home .image {
+  position: relative;
+}
+
+#home .image::before {
+  /*before é como um elemento fantasma que virá antes da imagem*/
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  top: -16.8%;
+  left: 16.8%;
+  z-index: 0;
+  /*valores sempre referentes a imagem principal*/
+}
+
+#home .image img {
+  position: relative;
+  right: 2.93rem;
+}
+
+#home .image img,
+#home .image::before {
+  border-radius: 0.25rem;
+}
+
+#home .text {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  text-align: center;
+}
+
+#home .text h1 {
+  margin-bottom: 1rem;
+}
+
+#home .text p {
+  margin-bottom: 2rem;
+}
