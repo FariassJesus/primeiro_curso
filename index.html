@@ -8,8 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Trás as configurações de responsividade da pagina-->
     <title>Origin Six</title>
+
+    <!-- ICONES -->
+    <!--editor de icones em SVG: https://icomoon.io/app
+    o app irá gerar um arquivo CSS (no caminho abaixo) possibilitando transformar os ícones em CSS puro e linka-los a area desejada-->
+    <link rel="stylesheet" href="Assets/fonts/style.css" />
+
     <!-- STYLES -->
     <link rel="stylesheet" href="style.css" />
+
     <!-- FONTS-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,8 +30,22 @@
     <header id="header">
       <nav class="container">
         <!-- NAV significa que terá dentro conteúdos de navegação-->
-        <a class="logo" href="#">beauty<span>salon.</span></a>
-        <div class="menu">...</div>
+        <a class="logo" href="#">beauty<span>salon</span>.</a>
+        <div class="menu">
+          <!-- MENU -->
+          <ul class="grid">
+            <!-- usado para criar uma lista -->
+            <li><a class="title" href="#home">Início</a></li>
+            <!-- li é um item para a lista -->
+            <li><a class="title" href="#about">Sobre</a></li>
+            <li><a class="title" href="#services">Serviços</a></li>
+            <li><a class="title" href="#testemonials">Depoimentos</a></li>
+            <li><a class="title" href="#contact">Contato</a></li>
+          </ul>
+        </div>
+        <!-- /MENU-->
+        <div class="toggle icon-close"></div>
+        <div class="toggle icon-menu"></div>
       </nav>
     </header>
     <main>
@@ -37,7 +58,7 @@
             />
           </div>
           <div class="text">
-            <h1>Saúde natural para seus cabelos</h1>
+            <h2 class="title">Saúde natural para seus cabelos</h2>
             <p>
               <!-- tag <p> utilizada para paragrafos-->
               Um salão exclusivo em São Paulo, especializado em tratamentos
@@ -48,9 +69,88 @@
         </div>
       </section>
       <div class="divider-1"></div>
-      <section class="section">
-        <div class="container">outra section</div>
+
+      <section class="section" id="about">
+        <div class="container grid">
+          <div class="image">
+            <img
+              src="https://images.unsplash.com/photo-1559599101-f09722fb4948?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aGFpcmRyZXNzZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              alt="3 mulheres sorrindo"
+            />
+          </div>
+          <div class="text">
+            <h2 class="title">Sobre nós</h2>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Perferendis accusamus, velit dicta tenetur amet esse optio fugit
+              officia sapiente dolorem laudantium quasi corrupti rem eligendi
+              voluptatibus vero deleniti porro quibusdam.
+            </p>
+            <br />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quo
+              quam maiores corrupti praesentium explicabo? Placeat, reiciendis
+              enim, recusandae dicta, temporibus perspiciatis beatae culpa omnis
+              eligendi ex autem sed nemo!
+            </p>
+            <br />
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet,
+              sint quisquam! Sint sed eaque dolorum placeat fuga, natus eveniet,
+              distinctio voluptates odit suscipit enim doloribus id a quo
+              quaerat consectetur.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-2"></div>
+
+      <section class="section" id="services">
+        <div class="container grid">
+          <header>
+            <h2 class="title">Serviços</h2>
+            <p>
+              Com mais de 10 anos no mercado, o <strong>Beautysalon</strong> já
+              conquistou clientes de inúmeros países com seus tratamentos
+              exclusivos e totalmente naturais
+            </p>
+          </header>
+          <div class="cards grid">
+            <div class="card">
+              <i class="icon-woman-hair"></i>
+              <h3 class="title">Terapia capilar</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
+                quos tempore dolorem quia quam exercitationem totam sed
+                perferendis veniam earum eos pariatur cupiditate incidunt
+                delectus, non natus excepturi nulla voluptate.
+              </p>
+            </div>
+            <div class="card">
+              <i class="icon-trim"></i>
+              <h3 class="title">Cortes</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
+                ratione vel reiciendis quam, perspiciatis ea tempore nemo
+                placeat iure eos distinctio ullam dolor, libero mollitia, saepe
+                consectetur molestiae repellat. Eveniet?
+              </p>
+            </div>
+            <div class="card">
+              <i class="icon-cosmetic"></i>
+              <h3 class="title">Tratamentos</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                voluptate quis recusandae harum corrupti aperiam quaerat optio
+                quod eaque at vitae, maiores id? Ex doloribus tempore, eos
+                distinctio voluptatum quibusdam.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
+    <script src="main.js"></script>
   </body>
 </html>
