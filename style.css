@@ -37,6 +37,12 @@ img {
   --text-color-light: hsl(0 0% 98%);
   --body-color: hsl(0 0% 98%);
   /*as cores da pagina são inseridas no root como variáveis para serem chamadas em suas respectivas caixas caso seja necessário*/
+  /* FONTS */
+  --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+
+  --title-font: 'Poppins', sans-serif;
+  --body-font: 'DM Sans', sans-serif;
 }
 
 /* ========== BASE ====================*/
@@ -45,14 +51,14 @@ html {
   /*para rolar a tela de forma mais suave*/
 }
 body {
-  font: 400 1rem 'DM Sans', sans-serif;
+  font: 400 1rem var(--body-font);
   color: var(--text-color);
   background: var(--body-color);
   -webkit-font-smoothing: antialiased;
 }
 
 .title {
-  font: 700 1.875rem 'Poppins', sans-serif;
+  font: 700 1.875rem var(--title-font);
   color: var(--title-color);
   -webkit-font-smoothing: auto;
 }
@@ -65,7 +71,7 @@ body {
   align-items: center;
   padding: 0 2rem;
   border-radius: 0.25rem;
-  font: 500 1rem 'DM Sans', sans-serif;
+  font: 500 1rem var(--body-font);
   transition: background 0.3s;
 }
 
@@ -105,12 +111,17 @@ body {
   gap: 2rem; /*espaçamento padrão entre os elementos da classe*/
 }
 .section {
-  padding: 5rem 0; /*5rem se refere as partes de cima e de baixo, 0 as laterais*/
-  /* preenchimento de espaço em todo início e final do conteúdo da página*/
+  padding: calc(5rem + var(--header-height)) 0;
+  /*5rem se refere as partes de cima e de baixo, 0 as laterais
+ preenchimento de espaço em todo início e final do conteúdo da página*/
 }
 
 .section .title {
   margin-bottom: 1rem;
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-font-size);
 }
 
 .section header {
@@ -143,14 +154,10 @@ o terceiro é o blur;
 o quarto o espalhamento;*/
 }
 
-main {
-  margin-top: calc(var(--header-height) + 2rem);
-}
-
 /* ========== LOGO ====================*/
 
 .logo {
-  font: 700 1.31rem 'Poppins', sans-serif;
+  font: 700 1.31rem var(--title-font);
   color: var(--title-color);
 }
 
@@ -181,7 +188,8 @@ nav ul li a {
   position: relative;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
   color: var(--base-color);
 }
 
@@ -198,7 +206,8 @@ nav ul li a::after {
   transition: width 0.2s;
 }
 
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
   width: 100%;
 }
 
@@ -468,6 +477,10 @@ footer {
   background: var(--base-color);
 }
 
+footer.section {
+  padding: 4rem 0;
+}
+
 footer .logo {
   display: inline-block;
   /* as tags "a" de links sempre virão com display inline impossibilitando o ajuste de margin, para possibilitar isso é necessário usar o display inline-block*/
@@ -484,8 +497,13 @@ footer i {
   color: var(--text-color-light);
 }
 
+footer .social {
+  grid-auto-flow: column; /*joga os elementos do grid um ao lado do outro*/
+  width: fit-content; /*encaixa o espaçamento apenas no tamanho da caixa (icone no caso)*/
+}
+
 footer .social a {
-  margin-right: 2rem;
+  /*possível se não tiver no display grid para dar os espaçamentos: margin-right: 2rem;*/
   transition: 0.3s;
   display: inline-block;
 }
@@ -523,9 +541,112 @@ footer .social a:hover {
   transform: translateY(0);
 }
 
-/* Responsivo */
+/* Responsivo 1200px > */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+  }
+  .section {
+    padding: 10rem 0;
+  }
+
+  .section header,
+  #testimonials header {
+    max-width: 32rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    height: 3.125rem;
+  }
+
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  nav .menu ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav .menu ul li a.title {
+    font: 400 1rem var(--body-font);
+    -webkit-font-smoothing: antialiased;
+  }
+  nav .menu ul li a.title.active {
+    font-weight: bold;
+    -webkit-font-smoothing: auto;
+  }
+  nav .icon-menu {
+    display: none;
+  }
+  main {
+    margin-top: var(--header-height);
+  }
+  #home .container {
+    grid-auto-flow: column;
+    justify-content: space-between;
+  }
+
+  #home .image {
+    order: 1; /*funciona apenas no display grid ou flex para ordenar os elementos*/
+  }
+
+  #home .text {
+    order: 0;
+    max-width: 24rem;
+    text-align: left;
+  }
+
+  #about .container {
+    margin: 0 auto;
+    grid-auto-flow: column;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr; /*distribui em frações os elementos do grid, no caso todos por igual*/
+  }
+  .card {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  #testimonials .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #contact .container {
+    grid-auto-flow: column;
+    align-items: center;
+  }
+  #contact .text {
+    max-width: 25rem;
+  }
+  footer.section {
+    padding: 3.75rem;
+  }
+  footer .container {
+    grid-auto-flow: column; /*alinhou em colunas (lado a lado)*/
+    align-items: center; /*ajustou o eixo X dos elementos*/
+    justify-content: space-between; /*ajustou o espaçamento dos elementos*/
+  }
+
+  footer .logo {
+    font-size: 2.25rem;
+  }
+}
+
+/*992px >*/
 @media (min-width: 992px) {
   :root {
-    --title-font-size: 2.2rem;
+    --title-font-size: 2.25rem;
+    --subtitle-font-size: 1.125rem;
   }
 }
