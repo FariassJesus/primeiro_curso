@@ -541,7 +541,7 @@ footer .social a:hover {
   transform: translateY(0);
 }
 
-/* Responsivo 1200px > */
+/* ================Responsivo 1200px =========== > */
 @media (min-width: 1200px) {
   .container {
     max-width: 1120px;
@@ -592,7 +592,9 @@ footer .social a:hover {
   }
   #home .container {
     grid-auto-flow: column;
+    align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
   }
 
   #home .image {
